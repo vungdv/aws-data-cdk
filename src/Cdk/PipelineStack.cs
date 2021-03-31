@@ -3,6 +3,7 @@ using Amazon.CDK.AWS.CodeCommit;
 using Amazon.CDK.AWS.CodePipeline;
 using Amazon.CDK.AWS.CodePipeline.Actions;
 using Amazon.CDK.Pipelines;
+using CdkWorkshop;
 
 namespace Cdk
 {
@@ -28,12 +29,17 @@ namespace Cdk
                 SynthAction = SimpleSynthAction.StandardNpmSynth(new StandardNpmSynthOptions{
                     SourceArtifact = sourceArtifact,
                     CloudAssemblyArtifact = cloudAssemblyArtifact,
-                    InstallCommand = "npm install -g aws-cdk && apt-get install -y dotnet-sdk-3.1",
-                    BuildCommand = "dotnet build"
+                    
+                    InstallCommand = "npm install -g aws-cdk" 
+                    + " && wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb" 
+                    + " && dpkg -i packages-microsoft-prod.deb"
+                    + " && apt-get update"
+                    + " && apt-get install -y dotnet-sdk-3.1",
+                    BuildCommand = "dotnet build pư"
                 })
             });
 
-            var deploy = new Stage(this, "Deploy");
+            var deploy = new WorkshopPipelineStage (this, "Deploy");
             var deployStage = pipeline.AddApplicationStage(deploy);
         }
     }
