@@ -28,13 +28,13 @@ namespace Cdk
                 SynthAction = SimpleSynthAction.StandardNpmSynth(new StandardNpmSynthOptions{
                     SourceArtifact = sourceArtifact,
                     CloudAssemblyArtifact = cloudAssemblyArtifact,
-                    InstallCommand = "npm install -g aws-cdk && sudo apt-get install -y dotnet-sdk-3.1",
+                    InstallCommand = "npm install -g aws-cdk && apt-get install -y dotnet-sdk-3.1",
                     BuildCommand = "dotnet build"
                 })
             });
 
-            var deploy = new Stage(this, "Deploy");
-            var deployStage = pipeline.AddApplicationStage(deploy);
+            // var deploy = new Stage(this, "Deploy");
+            // var deployStage = pipeline.AddApplicationStage(deploy);
         }
     }
 }
