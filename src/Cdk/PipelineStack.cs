@@ -35,7 +35,7 @@ namespace Cdk
                     + " && dpkg -i packages-microsoft-prod.deb"
                     + " && apt-get update"
                     + " && apt-get install -y dotnet-sdk-3.1",
-                    BuildCommand = "dotnet build pư"
+                    BuildCommand = "dotnet build src"
                 })
             });
 
