@@ -33,8 +33,8 @@ namespace Cdk
                 })
             });
 
-            // var deploy = new Stage(this, "Deploy");
-            // var deployStage = pipeline.AddApplicationStage(deploy);
+            var deploy = new Stage(this, "Deploy");
+            var deployStage = pipeline.AddApplicationStage(deploy);
         }
     }
 }
